@@ -59,14 +59,14 @@ import com.jme3.texture.Texture.MinFilter;
 import com.jme3.texture.Texture2D;
 import de.lessvoid.nifty.Nifty;
 
-public class TestGUICube extends SimpleApplication{
+public class DemoNiftyGUICube extends SimpleApplication{
 
     private Nifty nifty;
     int guiCursorX, guiCursorY;
     
 
     public static void main(String[] args){
-        TestGUICube app = new TestGUICube();
+        DemoNiftyGUICube app = new DemoNiftyGUICube();
         
         AppSettings settings;
         app.setSettings(settings = new AppSettings(true));

@@ -66,7 +66,7 @@ import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TestGUIQuad extends SimpleApplication {
+public class DemoNiftyGUIQuad extends SimpleApplication {
 
     private Map<Geometry, NiftyJmeDisplay> nifty = new HashMap();
     private NiftyJmeDisplay focusedNifty = null;
@@ -74,7 +74,7 @@ public class TestGUIQuad extends SimpleApplication {
     int guiCursorX, guiCursorY;
 
     public static void main(String[] args) {
-        TestGUIQuad app = new TestGUIQuad();
+        DemoNiftyGUIQuad app = new DemoNiftyGUIQuad();
 
         AppSettings settings;
         app.setSettings(settings = new AppSettings(true));
@@ -139,7 +139,8 @@ public class TestGUIQuad extends SimpleApplication {
     public void simpleInitApp() {
         stateManager.detach(stateManager.getState(FlyCamAppState.class));
 
-        flyCam = new GUICamera(cam);
+        GUICamera guiCam = new GUICamera(cam);
+        flyCam = guiCam;
         flyCam.setMoveSpeed(4f); // odd to set this here but it did it before
         
         
@@ -179,6 +180,8 @@ public class TestGUIQuad extends SimpleApplication {
         inputManager.addListener(new AnalogListener() {
             @Override public void onAnalog(String name, float value, float tpf) {
                                 
+                if (guiCam.isDragToRotate())
+                    return;
                 
                 Vector3f origin = cam.getWorldCoordinates(
                         inputManager.getCursorPosition(), 0.0f);

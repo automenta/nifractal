@@ -7,6 +7,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.system.AppSettings;
 import com.simsilica.lemur.Checkbox;
 import com.simsilica.lemur.Container;
+import com.simsilica.lemur.DefaultRangedValueModel;
 import com.simsilica.lemur.GuiGlobals;
 import com.simsilica.lemur.Label;
 import com.simsilica.lemur.Panel;
@@ -74,7 +75,7 @@ abstract public class FractalApp extends SimpleApplication {
     }
         private static int counter = 0;
 
-    public class LemurNode extends Container {
+    public static class LemurNode extends Container {
 
         
         private final String id;
@@ -106,11 +107,17 @@ abstract public class FractalApp extends SimpleApplication {
             //panel.addChild(new Label("Stats Settings", new ElementId("header"), "glass"));
             //panel.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
             
-            Vector3f hudSize = new Vector3f(20, 20, 1);
-            hudSize.maxLocal(panel.getPreferredSize());        
-            panel.setPreferredSize(hudSize);            
         
             return panel;
+            
+        }
+        
+        public void layout(float sx, float sy, float sz, float scale) {
+            Vector3f hudSize = new Vector3f(sx, sy, sz);
+            hudSize.maxLocal(getPreferredSize());        
+            setPreferredSize(hudSize);
+            //setLocalScale((1.0f/getLocalScale().normalize()).mult(hudSize.length()));
+            setLocalScale(getLocalScale().normalize().mult(scale));
             
         }
         
@@ -123,6 +130,11 @@ abstract public class FractalApp extends SimpleApplication {
 
             return l;
         }
+        public Slider newSlider(float min, float max, float value) {
+            Slider l = addChild(new Slider(new DefaultRangedValueModel(min, max, value), "glass"));
+
+            return l;
+        }        
         
 //        Checkbox temp = panel.addChild(new Checkbox("Show Stats"));
 //        temp.setChecked(true);

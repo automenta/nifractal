@@ -18,6 +18,7 @@ import com.jme3.scene.shape.Box;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
+import nars3d.FractalApp.LemurNode;
 import syncleus.dann.graph.drawing.GraphDrawer;
 import syncleus.dann.graph.drawing.hyperassociativemap.HyperassociativeMap;
 import syncleus.dann.math.Vector;
@@ -72,6 +73,8 @@ public class NeuralNode extends Node {
     
     protected Geometry newNode(VectorNeuralNode n) {
         
+        Node group = new Node("neuron");
+        
         Box box = new Box(Vector3f.ZERO, 1, 1, 1);
         Geometry geom = new Geometry("Box", box);
         Material mat = NeuralDemo1.unshaded.clone();
@@ -79,7 +82,23 @@ public class NeuralNode extends Node {
         mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
         geom.setMaterial(mat);
         
-        attachChild(geom);        
+        
+        
+        LemurNode ln = new LemurNode("y");
+        ln.newLabel(n.toString());
+        ln.newSlider(0,1,0.1f);
+        
+        ln.move(-0.5f, 0.5f, 1.1f);
+        //ln.scale(0.1f);
+        ln.layout(0.1f, 0.1f, 0.1f,0.05f);
+               
+        group.attachChild(geom);
+        group.attachChild(ln);
+        
+        
+        attachChild(group);
+        
+        
         
         nodes.put(n, geom);
         return geom;
@@ -94,8 +113,10 @@ public class NeuralNode extends Node {
     }
     
     protected void updateLayout(float tpf) {
-        ((HyperassociativeMap)layout).setMaxSpeed(0.01);
-        layout.align();
+        if (!layout.isAligned()) {
+            ((HyperassociativeMap)layout).setMaxSpeed(0.0025); 
+            layout.align();
+        }
         
         for (Map.Entry<VectorNeuralNode, Geometry> e : nodes.entrySet()) {
             VectorNeuralNode node = e.getKey();
@@ -112,11 +133,11 @@ public class NeuralNode extends Node {
             
             
             if (p.getDimension() == 2) 
-                s.setLocalTranslation((float)p.get(1), (float)p.get(2), 0);
+                s.getParent().setLocalTranslation((float)p.get(1), (float)p.get(2), 0);
             else
-                s.setLocalTranslation((float)p.get(1), (float)p.get(2), (float)p.get(3));
+                s.getParent().setLocalTranslation((float)p.get(1), (float)p.get(2), (float)p.get(3));
             
-            s.setLocalScale(nodeScale * (1f+(float)node.getActivation()));
+            s.getParent().setLocalScale(nodeScale * (1f+(float)node.getActivation()));
         }
         
         for (Map.Entry<VectorNeuralEdge, Line3DNode> e : edges.entrySet()) {
@@ -126,12 +147,12 @@ public class NeuralNode extends Node {
             VectorNeuralNode fromNode = edge.getSourceNode();
             VectorNeuralNode toNode = edge.getDestinationNode();
 
-            Vector3f from = nodes.get(fromNode).getLocalTranslation();
-            Vector3f to = nodes.get(toNode).getLocalTranslation();
+            Vector3f from = nodes.get(fromNode).getParent().getLocalTranslation();
+            Vector3f to = nodes.get(toNode).getParent().getLocalTranslation();
             
             float act = ((float)fromNode.getActivation())/2.0f+0.5f;
             float w = ((float)edge.getWeight())/2.0f+0.5f;
-            s.updateLineNode(from, to, 0.01 + (0.05 * w), 
+            s.updateLineNode(from, to, 0.005 + (0.02 * w), 
                             Color.getHSBColor(act, 1f, 1f).getRGB()
             );
         }

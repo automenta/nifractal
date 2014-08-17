@@ -169,6 +169,8 @@ public class DemoNiftyLemurRemix extends SimpleApplication {
         initCommon();
         initNifty();
         initLemur();
+        
+        
     }
 
     
@@ -308,9 +310,9 @@ public class DemoNiftyLemurRemix extends SimpleApplication {
         Styles styles = GuiGlobals.getInstance().getStyles();
         styles.getSelector(Slider.THUMB_ID, "glass").set("text", "[]", false);
         styles.getSelector(Panel.ELEMENT_ID, "glass").set("background",
-                new QuadBackgroundComponent(new ColorRGBA(0, 0.25f, 0.25f, 0.5f)));
+                new QuadBackgroundComponent(new ColorRGBA(0, 0.25f, 0.25f, 0.5f),0,0,0,true));
         styles.getSelector(Checkbox.ELEMENT_ID, "glass").set("background",
-                new QuadBackgroundComponent(new ColorRGBA(0, 0.5f, 0.5f, 0.5f)));
+                new QuadBackgroundComponent(new ColorRGBA(0, 0.5f, 0.5f, 0.5f),0,0,0,true));
         styles.getSelector("spacer", "glass").set("background",
                 new QuadBackgroundComponent(new ColorRGBA(1, 0.0f, 0.0f, 0.0f)));
         styles.getSelector("header", "glass").set("background",
@@ -350,8 +352,11 @@ public class DemoNiftyLemurRemix extends SimpleApplication {
         // Custom "header" element type.
         panel.addChild(new Label("Cube Settings", new ElementId("header"), "glass"));
         panel.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
-        panel.addChild(new Label("Red:"));
+        Label redLabel = panel.addChild(new Label("Red:"));
+        redLabel.setLocalTranslation(0, 0, 5);
+        
         redRef = panel.addChild(new Slider("glass")).getModel().createReference();
+        
         panel.addChild(new Label("Green:"));
         greenRef = panel.addChild(new Slider("glass")).getModel().createReference();
         panel.addChild(new Label("Blue:"));
@@ -360,15 +365,24 @@ public class DemoNiftyLemurRemix extends SimpleApplication {
         alphaRef = panel.addChild(new Slider(new DefaultRangedValueModel(0, 100, 100), "glass")).getModel().createReference();
 
         hudPanel.addChild(panel);
-        //guiNode.attachChild(hudPanel);
+        
+        /*
+        rootNode.addControl(new UpdateControl() {
+            
+            @Override protected void controlUpdate(float tpf) {
+                hudPanel.rotate(0, 0.01f, 0);
+                
+            }
+        }); 
+                */
 
         // Increase the default size of the hud to be a little wider
         // if it would otherwise be smaller.  Height is unaffected.
-        Vector3f hudSize = new Vector3f(20, 0, 0);
+        Vector3f hudSize = new Vector3f(20, 1, 1);
         hudSize.maxLocal(hudPanel.getPreferredSize());        
         hudPanel.setPreferredSize(hudSize);
         
-        hudPanel.scale(0.02f);
+        hudPanel.scale(0.01f);
         
         
 
@@ -386,8 +400,7 @@ public class DemoNiftyLemurRemix extends SimpleApplication {
         // A draggable bordered panel
         Container testPanel = new Container();
         testPanel.setPreferredSize(new Vector3f(200, 200, 0));
-        testPanel.setBackground(TbtQuadBackgroundComponent.create("icons/border.png",
-                1, 2, 2, 3, 3, 0, false));
+        testPanel.setBackground(TbtQuadBackgroundComponent.create("/com/simsilica/lemur/icons/border.png",           1, 2, 2, 3, 3, 0, false));
         Label test = testPanel.addChild(new Label("Border Test"));
 
         // Center the text in the box.
@@ -426,6 +439,8 @@ public class DemoNiftyLemurRemix extends SimpleApplication {
                     (float) (blueRef.get() / 100.0),
                     (float) (alphaRef.get() / 100.0));
         }
+        
+        
     }
 
 }

@@ -30,7 +30,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package nars3d;
+package nars3d.test;
 
 import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
@@ -58,6 +58,7 @@ import com.jme3.texture.Texture.MagFilter;
 import com.jme3.texture.Texture.MinFilter;
 import com.jme3.texture.Texture2D;
 import de.lessvoid.nifty.Nifty;
+import nars3d.GUICamera;
 
 public class DemoNiftyGUICube extends SimpleApplication{
 

@@ -32,7 +32,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package nars3d;
+package nars3d.test;
 
 import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;

@@ -9,7 +9,6 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.VertexBuffer;
 import com.jme3.util.BufferUtils;
-import org.nugs.graph3d.api.Range;
 
 /**
  *
@@ -17,6 +16,25 @@ import org.nugs.graph3d.api.Range;
  */
 public class CoordinateSystem extends Mesh {
     
+    public static class Range {
+        public double min;
+        public double max;
+
+        public Range(double min, double max) {
+            this.min = min;
+            this.max = max;
+        }
+
+        public double getMax() {
+            return max;
+        }
+
+        public double getMin() {
+            return min;
+        }
+        
+                
+    }
     private Range xRange;
     private Range yRange;
     private Range zRange;

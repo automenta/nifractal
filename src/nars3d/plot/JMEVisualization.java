@@ -7,17 +7,12 @@ package nars3d.plot;
 
 import nars3d.plot.CoordinateSystem;
 import com.jme3.app.SimpleApplication;
-import com.jme3.asset.AssetManager;
 import com.jme3.material.Material;
 import com.jme3.scene.Geometry;
 import com.jme3.system.AppSettings;
 import com.jme3.system.JmeCanvasContext;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import javax.swing.JPanel;
-import org.neuroph.core.NeuralNetwork;
-import org.neuroph.core.data.DataSet;
-import nars3d.plot.JMEVisualizationTopComponent;
 
 /**
  * JME based Visualization Component

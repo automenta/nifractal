@@ -37,9 +37,12 @@ public class Line3DNode extends Node {
 
     public final Vector3f from = new Vector3f();
     public final Vector3f to = new Vector3f();
+    private final Material mat;
     
-    public Line3DNode() {
+    public Line3DNode(Material mat) {
         super();
+        
+        this.mat = mat.clone();
 
         geom = newLineSpatial();
 //		lineSpatial.setModelBound(new OrientedBoundingBox());
@@ -56,8 +59,7 @@ public class Line3DNode extends Node {
     private Geometry newLineSpatial() {
         Mesh shape = getCylinder(3 /* segments */);
         //Mesh shape = new Cylinder(2, 3, 1, 1f, false);
-        Geometry g = new Geometry("l", shape);
-        Material mat = NeuralDemo1.unshaded.clone();
+        Geometry g = new Geometry("l", shape);        
         mat.setColor("Color", ColorRGBA.Gray);
         g.setQueueBucket(Bucket.Translucent);
         g.setMaterial(mat);        

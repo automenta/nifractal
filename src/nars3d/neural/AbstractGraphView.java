@@ -7,6 +7,7 @@ import com.jme3.math.ColorRGBA;
 import com.jme3.scene.control.UpdateControl;
 import com.simsilica.lemur.Slider;
 import nars3d.FractalApp;
+import nars3d.LemurNode;
 import syncleus.dann.graph.Graph;
 import syncleus.dann.graph.drawing.hyperassociativemap.HyperassociativeMap;
 

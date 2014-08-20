@@ -59,6 +59,7 @@ import com.jme3.scene.shape.Box;
 import com.jme3.texture.Texture;
 import com.simsilica.lemur.Slider;
 import nars3d.FractalApp;
+import nars3d.LemurNode;
 
 /**
  * @author normenhansen

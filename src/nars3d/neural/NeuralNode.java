@@ -18,7 +18,7 @@ import com.jme3.scene.shape.Box;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
-import nars3d.FractalApp.LemurNode;
+import nars3d.LemurNode;
 import syncleus.dann.graph.BidirectedEdge;
 import syncleus.dann.graph.Edge;
 import syncleus.dann.graph.Graph;

@@ -38,19 +38,16 @@ public class SpikingNeuralNetworkDemo1 extends FractalApp {
         //HodgkinHuxleyRule rule = new HodgkinHuxleyRule();
         //IzhikevichRule rule = new IzhikevichRule();
         SimpleRecurrentNetwork h = new SimpleRecurrentNetwork(net, 2, 4, 6);
-        net.addGroup(h);                
         
         /*
         Hopfield h = new Hopfield(net, 16);
         inputs.addAll(h.getInputNeurons());
-        net.addGroup(h);
         h.randomize();
         */
         
         /*
         FeedForward h2 = new FeedForward(net, new int[] { 4, 3, 3, 2}, new Point2D.Double());
         inputs.addAll(h2.getInputNeurons());
-        net.addGroup(h2);
                 */
         
         

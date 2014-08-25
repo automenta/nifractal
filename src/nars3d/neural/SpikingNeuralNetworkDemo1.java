@@ -11,7 +11,7 @@ import nars3d.FractalApp;
 import static nars3d.neural.AbstractGraphView.unshaded;
 import nars3d.plot.SurfacePlot;
 import syncleus.dann.data.random.UniformRandomData;
-import syncleus.dann.math.matrix.SimpleRealMatrix;
+import syncleus.dann.data.matrix.SimpleRealMatrix;
 import syncleus.dann.math.random.XORShiftRandom;
 import syncleus.dann.neural.spiking.SpikingNeuralNetwork;
 import syncleus.dann.neural.spiking.SpikingNeuron;

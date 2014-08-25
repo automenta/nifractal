@@ -23,7 +23,7 @@ import nars3d.LemurNode;
 import nars3d.plot.SurfacePlot;
 import syncleus.dann.data.vector.VectorData;
 import syncleus.dann.math.Sigmoids;
-import syncleus.dann.math.matrix.SimpleRealMatrix;
+import syncleus.dann.data.matrix.SimpleRealMatrix;
 import syncleus.dann.neural.spiking.SpikingNeuralNetwork;
 import syncleus.dann.neural.spiking.SpikingNeuron;
 import syncleus.dann.neural.spiking.subnetworks.SimpleRecurrentNetwork;

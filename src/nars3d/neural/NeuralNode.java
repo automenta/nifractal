@@ -18,14 +18,13 @@ import com.jme3.scene.shape.Box;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
-import nars3d.LemurNode;
+import syncleus.dann.data.vector.Vector;
 import syncleus.dann.graph.BidirectedEdge;
 import syncleus.dann.graph.Edge;
 import syncleus.dann.graph.Graph;
 import syncleus.dann.graph.WeightedEdge;
 import syncleus.dann.graph.drawing.GraphDrawer;
 import syncleus.dann.graph.drawing.hyperassociativemap.HyperassociativeMap;
-import syncleus.dann.math.Vector;
 import syncleus.dann.neural.VectorNeuralGraph.VectorNeuralEdge;
 import syncleus.dann.neural.VectorNeuralGraph.VectorNeuralNode;
 import syncleus.dann.neural.feedforward.graph.BackpropStaticNeuron;
@@ -43,7 +42,7 @@ public class NeuralNode<N,E extends Edge<N>> extends Node {
     
     private final GraphDrawer<Graph<N,E>,N> layout;
     float nodeScale = 0.1f;
-    float networkScale = 2.0f;
+    float networkScale = 5.0f;
     private final Material mat;
     
     public NeuralNode(Graph<N,E> g, GraphDrawer<Graph<N,E>,N> layout, Material m) {
@@ -98,17 +97,14 @@ public class NeuralNode<N,E extends Edge<N>> extends Node {
         
         
         
-        LemurNode ln = new LemurNode("y");
-        ln.newLabel(n.toString());
-        //ln.newLabel(n.getClass().getSimpleName());
-        //ln.newSlider(0,1,0.1f);
+        //LemurNode ln = new LemurNode("y");
+        //ln.newLabel(n.toString());
         
-        ln.move(-0.5f, 0.5f, 1.1f);
-        //ln.scale(0.1f);
-        ln.layout(0.1f, 0.1f, 0.1f,0.03f);
+        //ln.move(-0.5f, 0.5f, 1.1f);
+        //ln.layout(0.1f, 0.1f, 0.1f,0.03f);
                
         group.attachChild(geom);
-        group.attachChild(ln);
+        //group.attachChild(ln);
         
         
         attachChild(group);

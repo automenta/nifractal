@@ -63,7 +63,7 @@ import nars3d.neural.NeuralNode;
 import syncleus.dann.data.vector.VectorData;
 import syncleus.dann.graph.drawing.hyperassociativemap.HyperassociativeMap;
 import syncleus.dann.math.Sigmoids;
-import syncleus.dann.math.Vector;
+import syncleus.dann.data.vector.Vector;
 import syncleus.dann.neural.som.brain.ExponentialDecaySomBrain;
 
 /**

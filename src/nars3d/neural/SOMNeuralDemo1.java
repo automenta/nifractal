@@ -8,7 +8,7 @@ package nars3d.neural;
 
 import syncleus.dann.data.random.UniformRandomData;
 import syncleus.dann.graph.Graph;
-import syncleus.dann.math.Vector;
+import syncleus.dann.data.vector.Vector;
 import syncleus.dann.math.random.XORShiftRandom;
 import syncleus.dann.neural.som.brain.ExponentialDecaySomBrain;
 

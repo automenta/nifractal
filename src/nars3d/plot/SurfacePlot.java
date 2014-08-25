@@ -12,7 +12,7 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.shape.Quad;
 import java.lang.reflect.Array;
-import syncleus.dann.math.matrix.RealMatrix;
+import syncleus.dann.data.matrix.RealMatrix;
 
 /**
  *
@@ -49,7 +49,7 @@ public class SurfacePlot extends Node {
                 }
                 updatePoint(i, j, point[i][j], data.get(i,j));
             }
-        updateGeometricState();
+        //updateGeometricState();
     }
     
     public Geometry newPoint() {
@@ -68,6 +68,7 @@ public class SurfacePlot extends Node {
         spatial.setLocalScale(0.8f, 0.8f, 1f); //TODO parameter
         
         ColorRGBA c = new ColorRGBA(0.2f+ 0.8f*(float)value, 0.4f, 0.2f, 1f);
+                
         spatial.getMaterial().setColor("Color", c);
     }
     

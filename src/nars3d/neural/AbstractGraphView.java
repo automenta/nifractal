@@ -49,7 +49,7 @@ abstract public class AbstractGraphView extends FractalApp {
 //        gui2.scale(0.1f);
 //        gui2.move(2,2,-6f);
         
-        rootNode.attachChild(gui);
+        //rootNode.attachChild(gui);
 
         
         
